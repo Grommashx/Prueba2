@@ -1,0 +1,264 @@
+// * Se crea el estilo de todas las subpáginas * //
+
+// █▀▄ ██▀ ▀█▀ ▄▀▄ █ █   ▄▀▀ 
+// █▄▀ █▄▄  █  █▀█ █ █▄▄ ▄█▀ 
+.detail {
+  @include alinear(flex, center, center, none, 0);
+  position: relative;
+  overflow: hidden;
+
+	// IMAGEN DE FONDO
+  &__back {
+    opacity: 0.8;
+    z-index: -1;
+  }
+
+	// IMAGEN FRONTAL
+  &__front {
+    align-items : center;
+    display     : flex;
+    gap         : 2rem;
+    min-height  : 25rem;
+    padding     : 2rem 0;
+    width       : 80%;
+    @include responsive(sm) {
+      width: 95%;
+    }
+    @include responsive(xs) {
+      flex-direction: column;
+    }
+  }
+
+	// DIMENCIONES DE LA IMAGEN
+  &__img {
+    border-radius : 0.5rem;
+    border        : 0.5rem solid $c-principal;
+    box-shadow    : 0 0 0.5rem $static-black;
+    display       : block;
+    filter        : brightness(110%);
+    height        : 45rem;
+    margin        : 2rem 0;
+    max-height    : 45rem;
+    min-height    : 45rem;
+    min-width     : 30rem;
+    overflow      : hidden;
+    position      : relative;
+    width         : 30rem;
+    @include responsive(md) {
+      max-height : 28rem;
+      max-width  : 20rem;
+      min-height : 28rem;
+      min-width  : 20rem;
+    }
+    @include responsive(sm) {
+      margin     : auto;
+      max-height : 23rem;
+      max-width  : 15rem;
+      min-height : 23rem;
+      min-width  : 15rem;
+    }
+  }
+
+	// INFORMACIÓN
+  &__container {
+    @include container(100%, 49rem, 1rem, none);
+    background-color : rgba($c-black, 0.5);
+    border-radius    : 0.5rem;
+    color            : $static-white;
+    overflow         : auto;
+    @include responsive(md) {
+      height: 30rem;
+    }
+    @include responsive(sm) {
+      &-title {
+        font-size: 2rem;
+      }
+      &-subtitle {
+        font-size: 1rem;
+      }
+    }
+    &-subtitle {
+      &::before {
+        content: "《 ";
+      }
+      &::after {
+        content: " 》";
+      }
+    }
+    &-list {
+      font-size   : 1.5rem;
+      font-weight : bold;
+    }
+  }
+
+	// BOTONES INTERACTIVOS
+  &__buttons {
+    display               : grid;
+    gap                   : 0.5rem;
+    grid-template-columns : repeat(3, 1fr);
+    margin                : 1rem 0;
+    position              : relative;
+    &-label {
+      display: grid;
+    }
+    &-add {
+      background-color : $c-black;
+      border-radius    : 0.5rem;
+      border           : 0.2rem solid transparent;
+      color            : white;
+      cursor           : pointer;
+      font-size        : 1.8rem;
+      outline          : none;
+      padding          : 0.7rem 0;
+      text-align       : center;
+      text-transform   : uppercase;
+      transition       : 0.3s;
+      &:hover {
+        color        : $c-principal;
+        font-weight  : bold;
+      }
+    }
+    &-like {
+			@include btn-details--hover($like);
+    }
+    &-save {
+			@include btn-details--hover($save);
+    }
+    &-completed {
+			@include btn-details--hover($completed);
+    }
+  }
+  &__episodes {
+    display       : flex;
+    flex-flow     : row wrap;
+    gap           : 0.8rem 1rem;
+    margin-bottom : 1rem;
+    @include responsive(xs) {
+      display: grid;
+      grid-template-columns: calc(50% - 0.5rem) calc(50% - 0.5rem);
+    }
+  }
+  &__emition {
+    align-items     : center;
+    display         : flex;
+    flex-direction  : column;
+    height          : 100%;
+    justify-content : center;
+    text-align      : center;
+    &-icon {
+      font-size: 2.8rem;
+    }
+    &-info {
+      font-size: 2rem;
+    }
+    &-date {
+      font-size: 1.5rem;
+    }
+    @include responsive(sm) {
+      &-icon {
+        font-size: 2.3rem;
+      }
+      &-info {
+        font-size: 1.5rem;
+      }
+      &-date {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// MÁS INFORMACIÓN
+.status {
+  display     : flex;
+  flex-flow   : row wrap;
+  font-size   : 1.5rem;
+  font-style  : italic;
+  gap         : 0.5rem;
+  margin-left : 1.5rem;
+  @include responsive(sm) {
+    font-size: 1.2rem;
+  }
+  &--emition {
+    align-items : center;
+    gap         : 0.5rem;
+    &::before {
+      content: "";
+      background-color : $emision;
+      border-radius    : 50%;
+      display          : block;
+      height           : 0.9rem;
+      width            : 0.9rem;
+    }
+    &::after {
+      content: "En emision";
+      color: $emision;
+    }
+  }
+  &--finalized {
+    align-items : center;
+    gap         : 0.5rem;
+    &::before {
+      content: "";
+      background-color : $finalizado;
+      border-radius    : 50%;
+      display          : block;
+      height           : 0.9rem;
+      width            : 0.9rem;
+    }
+    &::after {
+      content: "Finalizado";
+      color: $finalizado;
+    }
+  }
+  &--category {
+    background-color : $c-principal;
+      padding-bottom : 0.5rem;
+      pointer-events : none;
+  }
+  &--colum {
+    flex-direction: column;
+  }
+  &__order {
+    align-items    : center;
+    display        : flex;
+    gap            : 0.5rem;
+    opacity        : 0.7;
+    pointer-events : none;
+    &-item {
+      &::before {
+        content: "";
+        background-color : $static-white;
+        border-radius    : 0.5rem;
+        font-size        : 0.9em;
+        padding          : 0 0.5rem;
+      }
+    }
+    &--active {
+      opacity: 1;
+    }
+    &--actual {
+      &::before {
+        content: "(Actual) ";
+        color: $emision;
+      }
+    }
+    &--precuela {
+      &::before {
+        content: "(Precuela) ";
+        color: $finalizado;
+      }
+    }
+    &--name {
+      color: $static-white;
+      &:hover {
+        color: $c-white;
+      }
+    }
+  }
+}
+
+// ID
+@include btn-details--id(like, $like);
+@include btn-details--id(save, $save);
+@include btn-details--id(completed, $completed);

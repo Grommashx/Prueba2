@@ -1,0 +1,119 @@
+// * Se crea la fórmula para generar automaticamente imágenes * //
+
+// LISTA ANIME
+$lista-anime: fruitsbasket, higewosoru, boruto, marsred, bokutachinoremake, genjitsushugiyuushanooukokusaikenki, higurashinonakukoronisotsu, kanojomokanojo, mahoukakoukou, otomegamenohametsu, peachboyriverside, remain, scarletnexus, vanitasnocarte;
+
+// LISTA DONGHUA
+$lista-donghua: wonderland, shiyichanganmingyuejishiyou, thewestward, weiwodushen, liuxinghuanjian, lordoftheuniverse, callerakshasa, onesteptowardfreedom;
+
+// BACKGROUNDS
+$backgrounds: join($lista-anime, $lista-donghua);
+
+// RUTAS
+$ruta-anime: "../../../img/anime";
+$ruta-donghua: "../../../img/donghua";
+$ruta-background: "../../../img/background";
+
+// IMAGENES GENERICAS
+.img {
+  @include position(absolute, -1rem, 0, 0, 0);
+  background-position : center;
+  background-size     : cover;
+  color               : transparent;
+  font-size           : 0.01rem;
+  height              : calc(100% + 1rem);
+  transform           : scale(1.13);
+  transition          : 0.3s;
+  width               : 100%;
+}
+
+// ANIMES
+@each $anime in $lista-anime {
+  .cap--#{$anime} {
+    background-image: url(#{$ruta-anime}/cap/#{$anime}.webp);
+  }
+  .ova--#{$anime} {
+    background-image: url(#{$ruta-anime}/ova/#{$anime}.webp);
+  }
+  .esp--#{$anime} {
+    background-image: url(#{$ruta-anime}/esp/#{$anime}.webp);
+  }
+  .peli--#{$anime} {
+    background-image: url(#{$ruta-anime}/peli/#{$anime}.webp);
+  }
+  .temp1--#{$anime} {
+    background-image: url(#{$ruta-anime}/temp1/#{$anime}.webp);
+  }
+  .temp2--#{$anime} {
+    background-image: url(#{$ruta-anime}/temp2/#{$anime}.webp);
+  }
+  .temp3--#{$anime} {
+    background-image: url(#{$ruta-anime}/temp3/#{$anime}.webp);
+  }
+  .temp4--#{$anime} {
+    background-image: url(#{$ruta-anime}/temp4/#{$anime}.webp);
+  }
+  .temp5--#{$anime} {
+    background-image: url(#{$ruta-anime}/temp5/#{$anime}.webp);
+  }
+}
+
+// DONGHUAS
+@each $donghua in $lista-donghua {
+  .cap--#{$donghua} {
+    background-image: url(#{$ruta-donghua}/cap/#{$donghua}.webp);
+  }
+  .ova--#{$donghua} {
+    background-image: url(#{$ruta-donghua}/ova/#{$donghua}.webp);
+  }
+  .esp--#{$donghua} {
+    background-image: url(#{$ruta-donghua}/esp/#{$donghua}.webp);
+  }
+  .peli--#{$donghua} {
+    background-image: url(#{$ruta-donghua}/peli/#{$donghua}.webp);
+  }
+  .temp1--#{$donghua} {
+    background-image: url(#{$ruta-donghua}/temp1/#{$donghua}.webp);
+  }
+  .temp2--#{$donghua} {
+    background-image: url(#{$ruta-donghua}/temp2/#{$donghua}.webp);
+  }
+  .temp3--#{$donghua} {
+    background-image: url(#{$ruta-donghua}/temp3/#{$donghua}.webp);
+  }
+  .temp4--#{$donghua} {
+    background-image: url(#{$ruta-donghua}/temp4/#{$donghua}.webp);
+  }
+  .temp5--#{$donghua} {
+    background-image: url(#{$ruta-donghua}/temp5/#{$donghua}.webp);
+  }
+}
+
+
+// BACKGROUNDS
+@each $fondo in $backgrounds {
+  .b-ova--#{$fondo} {
+    background-image: url(#{$ruta-background}/ova/#{$fondo}.webp);
+  }
+  .b-esp--#{$fondo} {
+    background-image: url(#{$ruta-background}/esp/#{$fondo}.webp);
+  }
+  .b-peli--#{$fondo} {
+    background-image: url(#{$ruta-background}/peli/#{$fondo}.webp);
+  }
+  .b-temp1--#{$fondo} {
+    background-image: url(#{$ruta-background}/temp1/#{$fondo}.webp);
+  }
+  .b-temp2--#{$fondo} {
+    background-image: url(#{$ruta-background}/temp2/#{$fondo}.webp);
+  }
+  .b-temp3--#{$fondo} {
+    background-image: url(#{$ruta-background}/temp3/#{$fondo}.webp);
+  }
+  .b-temp4--#{$fondo} {
+    background-image: url(#{$ruta-background}/temp4/#{$fondo}.webp);
+  }
+  .b-temp5--#{$fondo} {
+    background-image: url(#{$ruta-background}/temp5/#{$fondo}.webp);
+  }
+}

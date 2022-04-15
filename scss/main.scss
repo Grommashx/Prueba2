@@ -1,0 +1,29 @@
+// * Se juntan todos los archivos .scss para generar el archivo .css * //
+
+// █ █▄ ▄█ █▀▄ ▄▀▄ █▀▄ ▀█▀ ▄▀▄ █▄ █ ▀█▀ 
+// █ █ ▀ █ █▀  ▀▄▀ █▀▄  █  █▀█ █ ▀█  █  
+@import "abstracts/reset";
+@import "abstracts/variables";
+
+// ▄▀  ██▀ █▄ █ ██▀ █▀▄ ▄▀▄ █   
+// ▀▄█ █▄▄ █ ▀█ █▄▄ █▀▄ █▀█ █▄▄ 
+@import "abstracts/base";
+@import "abstracts/layout/images";
+@import "abstracts/layout/modal";
+@import "abstracts/layout/buttons";
+
+// █▄█ ██▀ ▄▀▄ █▀▄ ██▀ █▀▄ 
+// █ █ █▄▄ █▀█ █▄▀ █▄▄ █▀▄ 
+@import "abstracts/layout/header";
+
+// █▄ ▄█ ▄▀▄ █ █▄ █ 
+// █ ▀ █ █▀█ █ █ ▀█ 
+@import "abstracts/layout/main/index";
+@import "abstracts/layout/main/home";
+@import "abstracts/layout/main/directory";
+@import "abstracts/layout/main/detail";
+
+// █▀ ▄▀▄ ▄▀▄ ▀█▀ ██▀ █▀▄ 
+// █▀ ▀▄▀ ▀▄▀  █  █▄▄ █▀▄ 
+@import "abstracts/layout/footer+links";
+

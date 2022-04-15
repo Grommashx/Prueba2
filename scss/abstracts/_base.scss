@@ -1,0 +1,355 @@
+// * Se genera la base del framework del cual poder comenzar a personalizar con libertad * //
+
+// █▀▄ █▀▄ █ █▄ █ ▄▀▀ █ █▀▄ ▄▀▄ █   
+// █▀  █▀▄ █ █ ▀█ ▀▄▄ █ █▀  █▀█ █▄▄ 
+body {
+  display            : grid;
+  grid-template-rows : auto 1fr auto;
+  background-color   : $c-white;
+  header {
+    backdrop-filter  : blur(0.5rem);
+    background-color : rgba($c-black, 0.8);
+    position         : relative;
+    z-index          : 2;
+  }
+  footer {
+    position: relative;
+  }
+}
+@for $i from 1 through 6 {
+  h#{$i} {
+    line-height: 1.5em;
+  }
+  .h#{$i} {
+    font-size: ($i - 7) * -0.7rem;
+    font-weight: ($i - 7) * -150;
+    line-height: 1.5em;
+    text-align: center;
+  }
+}
+
+// ▄▀▀ ▄▀▄ █▄ ▄█ █▀▄ █▀▄ ██▀ ▄▀▀ ▄▀▀ 
+// ▀▄▄ ▀▄▀ █ ▀ █ █▀  █▀▄ █▄▄ ▄█▀ ▄█▀ 
+@mixin alinear($display, $align-items, $justify-content, $text-align, $gap) {
+  display         : $display;
+  align-items     : $align-items;
+  justify-content : $justify-content;
+  text-align      : $text-align;
+  gap             : $gap;
+}
+
+@mixin btn-close-sesion($left, $right) {
+  background-color : $c-white;
+  color            : $c-white;
+  font-size        : 1.5rem;
+  font-weight      : bold;
+  left             : $left;
+  margin           : 1rem;
+  position         : absolute;
+  right            : $right;
+  top              : 0;
+  z-index          : 1;
+}
+
+@mixin container ($widht, $height, $padding, $margin) {
+  width   : $widht;
+  height  : $height;
+  padding : $padding;
+  margin  : $margin;
+}
+
+@mixin dropdown {
+  height     : 0;
+  opacity    : 0;
+  overflow   : hidden;
+  transition : 0.3s ease-out;
+}
+
+@mixin position($position, $top, $right, $bottom, $left) {
+  position : $position;
+  top      : $top;
+  right    : $right;
+  bottom   : $bottom;
+  left     : $left;
+}
+
+@mixin rs($color) {
+  color: $color;
+  &:hover{
+    color: $color;
+  }
+}
+
+@mixin required($valor) {
+  $c-required: $valor;
+  @if $c-required == si {
+    color: $static-red;
+  }@else if $c-required == no {
+    color: $static-black;
+  }@else {
+    color: $static-black;
+  }
+}
+
+@mixin svg {
+  fill        : $c-white;
+  height      : 8rem;
+  margin-left : 4rem;
+  @include responsive(sm) {
+    height: 5rem;
+    margin: auto;
+  }
+}
+
+@mixin btn-details--hover($background) {
+  &:hover {
+    background-color: rgba($background, 0.8);
+  }
+}
+
+@mixin btn-details--id($name, $color) {
+  ##{$name} {
+    display: none;
+    &:checked ~ .detail__buttons .detail__buttons-#{$name} {
+      background-color : rgba($color, 0.8);
+      border-color     : $c-principal;
+    }
+  }
+}
+
+// ▄▀▄ █▄ █ █ █▄ ▄█ ▄▀▄ ▀█▀ █ ▄▀▄ █▄ █ 
+// █▀█ █ ▀█ █ █ ▀ █ █▀█  █  █ ▀▄▀ █ ▀█ 
+@keyframes ml-apparition {
+  0% {
+    opacity : 0;
+    width   : 0;
+  }
+  25% {
+    opacity : 0;
+    width   : 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    width: 23rem;
+  }
+  100% {
+    opacity : 1;
+    width   : 23rem;
+  }
+}
+@keyframes ml-disapparition {
+  0% {
+    opacity : 1;
+    width   : 23rem;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity : 0;
+    width   : 0;
+  }
+  100% {
+    opacity : 0;
+    width   : 0;
+  }
+}
+
+@keyframes presentacion {
+  0% {
+    margin-top: 0;
+  }
+  20% {
+    margin-top: 0;
+  }
+  25% {
+    margin-top: -10rem;
+  }
+  45% {
+    margin-top: -10rem;
+  }
+  50% {
+    margin-top: -20rem;
+  }
+  70% {
+    margin-top: -20rem;
+  }
+  75% {
+    margin-top: -30rem;
+  }
+  95% {
+    margin-top: -30rem;
+  }
+  100% {
+    margin-top: -30rem;
+  }
+}
+
+@keyframes btn-shadow {
+  0% {
+    box-shadow: 0 0 0 0 rgba($c-principal, 0.6);
+  }
+  95% {
+    box-shadow: 0 0 8px 16px rgba($c-principal, 0);
+  }
+  100% {
+    box-shadow: 0 0 8px 16px rgba($c-principal, 0);
+  }
+}
+
+@keyframes dark-light {
+  0% {
+    left: -100%;
+  }
+  25% {
+    left: -100%;
+  }
+  75% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes slider-automatic {
+  0% {
+    margin-left: 0;
+  }
+  20% {
+    margin-left: 0;
+  }
+  25% {
+    margin-left: -100%;
+  }
+  45% {
+    margin-left: -100%;
+  }
+  50% {
+    margin-left: -200%;
+  }
+  70% {
+    margin-left: -200%;
+  }
+  75% {
+    margin-left: -300%;
+  }
+  100% {
+    margin-left: -300%;
+  }
+}
+
+@keyframes aparicion-btn {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.01;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// ▄▀▀ █   ▄▀▄ ▄▀▀ ▄▀▀ 
+// ▀▄▄ █▄▄ █▀█ ▄█▀ ▄█▀ 
+.logo {
+  display: flex;
+  @include responsive(md) {
+    flex-direction : row;
+    margin         : auto;
+    text-align     : center;
+  }
+  @include responsive(sm) {
+    flex-direction: column;
+  }
+  &__header {
+    @include svg;
+    opacity    : 0.3;
+    transition : 0.3s;
+    @include responsive(md) {
+      opacity: 1;
+    }
+    @include responsive(xs) {
+      margin       : auto;
+      padding-left : 1rem;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &__footer {
+    @include svg;
+  }
+}
+
+.row>* {
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+}
+.row {
+  width: 100%;
+}
+
+.label {
+  @include container(auto, auto, 0, 0);
+  @include responsive(sm) {
+    transform: scale(0.8);
+  }
+  &--index {
+    z-index: 0;
+  }
+}
+
+.close {
+  @include position(absolute, 0, 0, 0, 0);
+  background-color : rgba($c-black, 0.5);
+  z-index          : -1;
+  display: none;
+}
+
+.type {
+  &--tv {
+    background-color: $tv;
+    &::after {
+      content: "TV";
+    }
+  }
+  &--ova {
+    background-color: $ova;
+    &::after {
+      content: "OVA";
+    }
+  }
+  &--esp {
+    background-color: $esp;
+    &::after {
+      content: "SPECIAL";
+    }
+  }
+  &--movie {
+    background-color: $movie;
+    &::after {
+      content: "MOVIE";
+    }
+  }
+}
+
+.modal {
+  right: 0;
+  bottom: 0;
+  &-footer {
+    @include responsive(xs) {
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+}

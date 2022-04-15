@@ -1,0 +1,333 @@
+// * Se crea el Header para la página principal y todas las subpáginas * //
+
+// █▄█ ██▀ ▄▀▄ █▀▄ ██▀ █▀▄ 
+// █ █ █▄▄ █▀█ █▄▀ █▄▄ █▀▄ 
+.header {
+  @include alinear(flex, center, space-between, center, 0);
+  &--sticky {
+    @include position(sticky, -6.5rem, none, none, none);
+    transition : 0.3s;
+    @include responsive(md) {
+      top: 0;
+    }
+    &:hover {
+      top: 0;
+    }
+  }
+
+	// NAVEGACIÓN
+  &__menu {
+    @include alinear(flex, center, none, center, 1rem);
+    @include container(none, 8rem, 0, 0 4rem 0 0);
+    font-size: 1.8rem;
+    @include responsive(md) {
+      display: none;
+    }
+    &-list {
+      @include alinear(flex, center, center, center, none);
+      @include container(none, 100%, 0, 0);
+      opacity    : 0.6;
+      position   : relative;
+      transition : 0.3s;
+      &:hover{
+        opacity: 1;
+      }
+      &:hover .header__menu-title {
+        color: $c-principal;
+      }
+      &--active {
+        opacity: 1
+      }
+      &--active .header__menu-title{
+        color: $c-principal;
+      }
+    }
+    &-title {
+      @include alinear(flex, center, center, center, 0.5rem);
+      @include container(10rem, 100%, 0 1rem, 0);
+      color       : $c-white;
+      font-weight : 500;
+      transition: 0.3s;
+      &:hover {
+        color: $c-principal;
+      }
+    }
+  }
+	
+  // HEADER AUXILIAR
+  &__subpage {
+    display  : none;
+    padding  : 0.4rem 0;
+    position : relative;
+    @include responsive(md) {
+      display: block;
+    }
+    &::before {
+      content: "";
+      @include position(absolute, -0.2rem, 0, none, 0);
+      background-color : rgba($static-white, 0.5);
+      display          : block;
+      height           : 0.2rem;
+    }
+    &--active {
+      background-color : rgba($c-principal, 0.1);
+      color            : $c-principal;
+      opacity          : 1 ;
+    }
+    &--inactive {
+      opacity: 0.5;
+    }
+    &-menu {
+      @include alinear(flex, center, space-evenly, center, 0);
+      @include container(100%, auto, 0, 0);
+    }
+    &-title {
+      border    : 0.2rem solid $c-principal;
+      font-size : 1.5rem;
+      height    : 4rem;
+      width     : 45vw;
+      @include responsive(xs) {
+        font-size : 1rem;
+        height    : 3rem
+      }
+    }
+  }
+}
+
+// SUBMENU
+.submenu {
+  @include alinear(grid, center, none, center, 0.5rem);
+  backdrop-filter  : blur(0.5rem);
+  background-color : rgba($c-white, 0.9);
+  font-size        : 1.5rem;
+  padding          : 0.5rem 0;
+  &__title {
+    @include alinear(flex, center, none, none, none);
+    @include container(100%, 2.5rem, 0 0 0 1.5rem, 0);
+    color      : $c-black;
+    opacity    : 0.5;
+    position   : relative;
+    transition : 0.3s;
+    &:hover {
+      color        : $c-black;
+      opacity      : 1;
+      padding-left : 2.5rem;
+    }
+  }
+  &__selector {
+    @include position(absolute, 0, none, 0, 0.5rem);
+    background-color : transparent;
+    border           : 0.1rem solid $c-principal;
+    transition       : 0.3s ease;
+    width            : 0.5rem;
+    .submenu__list:hover & {
+      background-color : $c-principal;
+      width            : 1rem;
+    }
+  }
+}
+
+// DROPDOWN
+#dropdown {
+  display: none;
+  &:checked ~ .ml__menu .dropdown--active {
+    height  : 6.5rem;
+    opacity : 1;
+  }
+  &:checked ~ .ml__menu .ml__icon {
+    transform: rotate(180deg);
+  }
+}
+.dropdown {
+  cursor : default;
+  width  : 18rem;
+  &:hover &--hover {
+    background-color : rgba($c-black, 0.2);
+    height           : 6.5rem;
+    opacity          : 1;
+  }
+  &--hover {
+    @include dropdown;
+    @include position(absolute, 100%, 0, none, 0);
+    background-color : $c-white;
+  }
+  &--active {
+    @include dropdown;
+  }
+}
+
+// RESPONSIVE
+.responsive {
+  @include alinear(flex, center, none, center, 2rem);
+  @include container(none, 50%, 0, 0 4rem 0 0);
+  display: none;
+  @include responsive(md) {
+    @include alinear(flex, center, none, center, 1rem);
+  }
+  @include responsive(sm) {
+    height: 5rem;
+  }
+  @include responsive(xs) {
+    margin-right: 1rem;
+  }
+  &__movil {
+    @include responsive(xs) {
+      display: none
+    }
+  }
+  &__burguer {
+    @include alinear(flex, center, center, none, none);
+    @include container(4.5rem, 4.5rem, 0, 0);
+    background-color : transparent;
+    border-color     : transparent;
+    color            : $c-white;
+    cursor           : pointer;
+    font-size        : 3rem;
+    font-weight      : 700;
+    &:hover {
+      color: $c-principal;
+    }
+  }
+}
+
+// MENU LATERAL
+#menu-lateral {
+  display: none;
+  &:checked ~ .ml {
+    left    : 0;
+    opacity : 1;
+    right   : 0;
+    z-index : 2;
+  }
+  &:checked ~ .ml .ml__container {
+    animation: ml-apparition 1s forwards;
+  }
+  &:checked ~ .ml .close {
+    display: block;
+  }
+}
+.ml {
+  @include position(fixed, 0, none, 0, -100%);
+  opacity    : 0;
+  transition : 0.5s ease;
+  z-index    : -1;
+  &__container {
+    @include alinear(flex, none, none, none, 1rem);
+    @include container(none, 100vh, 1rem, 0);
+    animation        : ml-disapparition 1s forwards;
+    background-color : $c-white;
+    flex-direction   : column;
+    overflow-x       : hidden;
+    overflow-y       : auto;
+    &-space {
+      @include container(none, 0.5rem, 0.1rem, 0 1rem);
+      background-color : $static-white;
+      border-radius    : 1rem;
+      display          : block;
+    }
+  }
+
+	// NAVEGACIÓN
+  &__menu {
+    @include alinear(grid, none, none, none, 1rem);
+    @include container(none, none, 1rem 0, none);
+    font-weight : 500;
+    max-height  : 32rem;
+    overflow-x  : hidden;
+    overflow-y  : auto;
+    &-dropdown {
+      background-color : transparent;
+      color            : $c-black;
+      font-size        : 1.5rem;
+    }
+    &-list {
+      &:hover {
+        background-color : rgba($c-black, 0.3);
+      }
+      &--disabled {
+        &:hover .ml__menu-title--disabled {
+          background-color : transparent;
+          color            : $c-black;
+          cursor           : default;
+          opacity          : 0.5;
+          padding          : 1rem;
+        }
+      }
+    }
+    &-title {
+      color      : $c-black;
+      display    : block;
+      font-size  : 1.5rem;
+      opacity    : 0.5;
+      padding    : 1rem;
+      transition : 0.3s;
+      &:hover {
+        padding-left: 2rem;
+      }
+      .ml__menu-list:hover & {
+        color   : $c-principal;
+        opacity : 1;
+      }
+    }
+    &-dropdown {
+      @include alinear(flex, center, none, none, 0.5rem);
+      width: 21rem;
+      &:hover {
+        padding: 1rem;
+      }
+    }
+  }
+
+	// REDES SOCIALES
+  &__rs {
+    @include alinear(grid, center, none, center, 0.5rem);
+    padding : 0 0.5rem;
+    &-menu {
+      @include alinear(flex, none, space-evenly, center, 1rem);
+      flex-wrap : wrap;
+      &:hover .ml__rs-title:not(:hover) {
+        color   : $c-black;
+        opacity : 0.5;
+      }
+    }
+    &-title {
+      @include alinear(flex, center, center, center, 0.5rem);
+      @include container(8.2rem, none, 0.3rem 0, 0);
+      border        : 1px solid transparent;
+      border-radius : 0;
+      color         : $c-white;
+      font-size     : 1rem;
+      font-weight   : 500;
+      opacity       : 1;
+      transition    : all 0.3s;
+      &:hover {
+        border-color  : $c-principal;
+        border-radius : 2.5rem;
+        color         : $static-white;
+        transform     : scale(1.2);
+      }
+      &--yt {
+        background-color: $c-youtube;
+      }
+      &--fb {
+        background-color: $c-facebook;
+      }
+      &--tw {
+        background-color: $c-twitter;
+      }
+      &--ds {
+        background-color: $c-discord;
+      }
+    }
+  }
+
+	// AUTHOR
+  &__author {
+    @include alinear(flex, flex-end, center, none, none);
+    @include container(none, 100%, 0, 1rem 0 0.5rem);
+  }
+  &__info {
+  color     : $c-black;
+  font-size : 1rem;
+  }
+}

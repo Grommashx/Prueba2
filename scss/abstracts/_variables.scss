@@ -1,0 +1,54 @@
+// * Se generan todas las variables que se consideran necesarias para la personalizacion del framework * //
+
+// ▄▀▀ ▄▀▄ █   ▄▀▄ █▀▄ ▄▀▀ 
+// ▀▄▄ ▀▄▀ █▄▄ ▀▄▀ █▀▄ ▄█▀ 
+// general
+$colores      : #14bbb3, #600eb0;
+$c-principal  : nth($colores, 1);
+$c-black      : #141414 ;
+$c-white      : #f5f0f2;
+// ↓ Se recomienda no cambiar estos colores ↓ //
+$static-black : black;
+$static-red   : red;
+$static-white : white;
+// ↑ Se recomienda no cambiar estos colores ↑ //
+
+// redes sociales
+$c-discord  : #8658f2;
+$c-facebook : #3B5998;
+$c-google   : #ffffff;
+$c-twitter  : #00aced;
+$c-youtube  : #ff0000;
+
+// tipo de video
+$tv: orangered;
+$ova: darkslateblue;
+$esp: yellowgreen;
+$movie: crimson;
+
+// EXTRAS
+$emision: springgreen;
+$finalizado: red;
+
+$like: red;
+$save: green;
+$completed: blue;
+
+// █▀ ▄▀▄ █▄ █ ▀█▀ ▄▀▀ 
+// █▀ ▀▄▀ █ ▀█  █  ▄█▀ 
+$f-1: 'Roboto', sans-serif;
+$f-2: 'Roboto Mono', monospace;
+$f-3: "JapanKness";
+
+// █▄ ▄█ ██▀ ▄▀▄ ▄▀▀ █ █ █▀▄ ██▀ ▄▀▀ 
+// █ ▀ █ █▄▄ █▀█ ▄█▀ ▀▄█ █▀▄ █▄▄ ▄█▀ 
+$breakpoints: (
+  xs: 575px,
+  sm: 767px,
+  md: 991px,
+);
+@mixin responsive($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}

@@ -1,0 +1,40 @@
+// * Se realiza un reset genérico, ademas de resetear una parte del framework de Bootstrap para una mejor personalizacion * //
+
+*{
+  box-sizing      : border-box;
+  list-style-type : none;
+  margin          : 0;
+  padding         : 0;
+}
+html{
+  font-size: 62.5%;
+}
+header, main, ul, ol, p, figure, footer {
+  margin  : 0;
+  padding : 0;
+}
+section, span {
+	top: 0;
+}
+label {
+	width: auto;
+	height: auto;
+}
+a {
+  text-decoration: none;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    margin: 0;
+    line-height : normal;
+  }
+  .h#{$i} {
+    line-height : normal;
+    margin      : 0;
+  }
+}
+@font-face {
+  font-family : "JapanKness";
+  src         : url(../../fonts/JapanKnees.ttf);
+}
